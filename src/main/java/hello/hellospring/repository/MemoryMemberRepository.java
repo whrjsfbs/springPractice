@@ -7,13 +7,13 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Repository
+//@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> memberList = new ConcurrentHashMap<>();
     private static Long sequence = 0L;
 
-    @Override
+    //@Override
     public Member save(Member member) {
         member.setId(++sequence);
         memberList.put(member.getId(), member);
