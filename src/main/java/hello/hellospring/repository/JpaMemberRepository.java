@@ -10,6 +10,7 @@ public class JpaMemberRepository implements MemberRepository{
 
     private final EntityManager em;
 
+    //@Autowired //(생성자가 1개이면 생략 가능)
     public JpaMemberRepository(EntityManager em) {
         this.em = em;
     }

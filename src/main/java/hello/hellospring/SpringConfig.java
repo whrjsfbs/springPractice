@@ -1,5 +1,7 @@
 package hello.hellospring;
 
+import hello.hellospring.aop.TimeTraceAop;
+import hello.hellospring.controller.MemberController;
 import hello.hellospring.repository.*;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,30 +14,40 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    /*private DataSource dataSource;
+    /* //JdbcTemplate이나 JDBC에 이용
+    private DataSource dataSource;
 
     @Autowired
     public SpringConfig(DataSource dataSource) {
         this.dataSource = dataSource;
-    }*/
+    }
+    */
 
+    /* //Jpa에 사용
     private EntityManager em;
 
     @Autowired
     public SpringConfig(EntityManager em) {
         this.em = em;
+    }*/
+
+    private MemberRepository memberRepository;
+
+    //@Autowired //생성자 1개면 생략가능
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
+    /*@Bean
     public MemberRepository memberRepository() {
         //return new MemoryMemberRepository();
         //return new JdbcMemberRepository(dataSource);
         //return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+        //return new JpaMemberRepository(em);
+    }*/
 }

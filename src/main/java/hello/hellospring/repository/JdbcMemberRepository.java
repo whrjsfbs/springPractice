@@ -13,6 +13,7 @@ public class JdbcMemberRepository implements MemberRepository{
 
     private final DataSource dataSource;
 
+    //@Autowired //(생성자가 1개이면 생략 가능)
     public JdbcMemberRepository(DataSource dataSource) {
         this.dataSource = dataSource;
     }
